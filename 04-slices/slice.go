@@ -15,3 +15,24 @@ func SumSlice(numbers []int) int {
 	}
 	return sum
 }
+
+func SumAll(numToSum ...[]int) []int {
+	var sum []int
+	for _, numbers := range numToSum {
+		sum = append(sum, SumSlice(numbers))
+	}
+	return sum
+}
+
+func SumAllTails(numToSum ...[]int) []int {
+	var sum []int
+	for _, numbers := range numToSum {
+		if len(numbers) == 0 {
+			sum = append(sum, 0)
+		} else {
+			tail := numbers[1:]
+			sum = append(sum, SumSlice(tail))
+		}
+	}
+	return sum
+}
